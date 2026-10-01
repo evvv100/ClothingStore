@@ -256,5 +256,6 @@ namespace ClothingStore.WinForms
         {
 
         }
+        // проверка связи
     }
 }
