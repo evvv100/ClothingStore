@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClothingStore.Core;
+using ClothingCategory1;
+using ClothingSize1;
+using Logic1;
 
 namespace ClothingStore.WinForms
 {

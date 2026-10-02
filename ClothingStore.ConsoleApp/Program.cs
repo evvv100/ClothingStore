@@ -5,6 +5,9 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using ClothingCategory1;
+using ClothingSize1;
+using Logic1;
 
 namespace ClothingStore.ConsoleApp
 {

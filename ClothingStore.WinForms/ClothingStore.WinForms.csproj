@@ -136,9 +136,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClothingCategory\ClothingCategory1.csproj">
+      <Project>{91719ce7-e362-4651-ace7-2cd47a1babc3}</Project>
+      <Name>ClothingCategory1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClothingSize\ClothingSize1.csproj">
+      <Project>{6d454d0c-ed3d-4bca-961f-583ec82e34a1}</Project>
+      <Name>ClothingSize1</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ClothingStore.Core\ClothingStore.Core.csproj">
       <Project>{3c734a1d-c82f-4759-886f-854b12e4778a}</Project>
       <Name>ClothingStore.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic\Logic1.csproj">
+      <Project>{1a79c3b7-df13-456d-9f1d-1059e7d180db}</Project>
+      <Name>Logic1</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
