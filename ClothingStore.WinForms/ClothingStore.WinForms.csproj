@@ -86,12 +86,6 @@
     <Compile Include="SearchByIDForm.Designer.cs">
       <DependentUpon>SearchByIDForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewCatalogForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ViewCatalogForm.Designer.cs">
-      <DependentUpon>ViewCatalogForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AddClothingForm.resx">
       <DependentUpon>AddClothingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,9 +112,6 @@
     </Compile>
     <EmbeddedResource Include="SearchByIDForm.resx">
       <DependentUpon>SearchByIDForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewCatalogForm.resx">
-      <DependentUpon>ViewCatalogForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

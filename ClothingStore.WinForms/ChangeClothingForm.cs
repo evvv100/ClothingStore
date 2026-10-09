@@ -16,7 +16,8 @@ namespace ClothingStore.WinForms
 {
     public partial class ChangeClothingForm : Form
     {
-        public ChangeClothingForm()
+        public int ID { get; set; }
+        public ChangeClothingForm(int id)
         {
             InitializeComponent();
 
@@ -24,6 +25,8 @@ namespace ClothingStore.WinForms
             bCancel.Click += BCancel_Click;
             ControlBox = false;
             label2.Text = MainForm._balance.ToString();
+            ID = id;
+            lID.Text = ID.ToString();
         }
         /// <summary>
         /// Закрывает форму
@@ -41,7 +44,6 @@ namespace ClothingStore.WinForms
         /// <param name="e">Аргумент данных события</param>
         private void BChange_Click(object sender, EventArgs e)
         {
-            tID.BackColor = System.Drawing.Color.White;
             tName.BackColor = System.Drawing.Color.White;
             tPrice.BackColor = System.Drawing.Color.White;
             cCategory.BackColor = System.Drawing.Color.White;
@@ -49,29 +51,6 @@ namespace ClothingStore.WinForms
 
             bool hasError = false;
             string errorMessage = "Пожалуйста, заполните обязательные поля:\n";
-
-            string idText = tID.Text.Trim();
-            if (string.IsNullOrEmpty(idText))
-            {
-                tID.BackColor = System.Drawing.Color.LightCoral;
-                errorMessage += "- ID\n";
-                hasError = true;
-            }
-            else if (!int.TryParse(idText, out int parsedID) || parsedID <= 0)
-            {
-                tID.BackColor = System.Drawing.Color.LightCoral;
-                errorMessage += "- ID(ID должен быть целым положительным числом)\n";
-                hasError = true;
-            }
-            else
-            {
-                if (MainForm._store.GetClothingById(int.Parse(idText)) == null)
-                {
-                    tID.BackColor = System.Drawing.Color.LightCoral;
-                    errorMessage += "- ID(Такого ID не существует)\n";
-                    hasError = true;
-                }
-            }
 
             string nameText = tName.Text.Trim();
             if (string.IsNullOrEmpty(nameText))
@@ -120,7 +99,7 @@ namespace ClothingStore.WinForms
             ClothingCategory categoryText = (ClothingCategory)cCategory.SelectedItem;
             ClothingSize sizeText = (ClothingSize)cSize.SelectedItem;
 
-            Clothing newClothing = new Clothing(int.Parse(idText), nameText, categoryText, sizeText, int.Parse(priceText));
+            Clothing newClothing = new Clothing(ID, nameText, categoryText, sizeText, int.Parse(priceText));
             MainForm._store.ChangeClothing(newClothing);
 
             MessageBox.Show("Товар успешно изменен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);

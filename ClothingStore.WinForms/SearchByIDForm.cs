@@ -19,13 +19,23 @@ namespace ClothingStore.WinForms
         public SearchByIDForm()
         {
             InitializeComponent();
-            bSearch.Click += BSearch_Click;
+            bChange.Click += BChange_Click;
             bCancel.Click += BCancel_Click;
-            bRemove.Hide();
             bRemove.Click += BRemove_Click;
+            bAdd.Click += BAdd_Click;
             ControlBox = false;
+            bRemove.Visible = true;
             label2.Text = MainForm._balance.ToString();
+            UpdateTableData();
         }
+
+        private void BAdd_Click(object sender, EventArgs e)
+        {
+            AddClothingForm addClothingForm = new AddClothingForm();
+            addClothingForm.ShowDialog();
+            UpdateTableData();
+        }
+
         /// <summary>
         /// Удаляет товар
         /// </summary>
@@ -33,20 +43,38 @@ namespace ClothingStore.WinForms
         /// <param name="e">Аргумент данных события</param>
         private void BRemove_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(tName.Text))
+            object tID = dCatalog.CurrentRow.Cells[0].Value;
+            int idd = int.Parse(tID.ToString());
+            if (MainForm._store.GetClothingById(idd)!=null)
             {
-                DialogResult res = MessageBox.Show("Вы действительно хотите удалить товар?", "Удаление товара", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if(res == DialogResult.Yes)
-                {
-                    MainForm._store.RemoveClothing(int.Parse(tID.Text));
-                    tName.Text = null;
-                    tID.Text = null;
-                    tCategory.Text = null;
-                    tSize.Text = null;
-                    tPrice.Text = null;
-                    bRemove.Hide();
-                }
+                MainForm._store.RemoveClothing(idd);
+                MessageBox.Show("Товар удален!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+            {
+                MessageBox.Show("Невозможно найти товар", "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            UpdateTableData();
+        }
+        /// <summary>
+        /// Обновляет данные в dataGridView dCatalog
+        /// </summary>
+        public void UpdateTableData()
+        {
+            MainForm._store.ReturnList(out List<Clothing> clothesList);
+            dCatalog.DataSource = null;
+            dCatalog.DataSource = clothesList;
+
+            if (dCatalog.Columns["ID"] != null)
+                dCatalog.Columns["ID"].HeaderText = "Артикул";
+            if (dCatalog.Columns["Name"] != null)
+                dCatalog.Columns["Name"].HeaderText = "Название";
+            if (dCatalog.Columns["Category"] != null)
+                dCatalog.Columns["Category"].HeaderText = "Категория";
+            if (dCatalog.Columns["Size"] != null)
+                dCatalog.Columns["Size"].HeaderText = "Размер";
+            if (dCatalog.Columns["Price"] != null)
+                dCatalog.Columns["Price"].HeaderText = "Цена (руб.)";
         }
         /// <summary>
         /// Закрывает форму
@@ -62,51 +90,19 @@ namespace ClothingStore.WinForms
         /// </summary>
         /// <param name="sender">Объект-отправитель события</param>
         /// <param name="e">Аргумент данных события</param>
-        private void BSearch_Click(object sender, EventArgs e)
+        private void BChange_Click(object sender, EventArgs e)
         {
-            tID.BackColor = System.Drawing.Color.White;
+            object cellValue = dCatalog.CurrentRow.Cells[0].Value;
+            int selectedId = 0;
 
-            bool hasError = false;
-            string errorMessage = "Пожалуйста, заполните обязательное поле:\n";
+            if (cellValue != null)
+            {
+                selectedId = Convert.ToInt32(cellValue);
+            }
+            ChangeClothingForm changeClothingForm = new ChangeClothingForm(selectedId);
+            changeClothingForm.ShowDialog();
+            UpdateTableData();
 
-            string idText = tID.Text.Trim();
-            if (string.IsNullOrEmpty(idText))
-            {
-                tID.BackColor = System.Drawing.Color.LightCoral;
-                errorMessage += "- ID\n";
-                hasError = true;
-            }
-            else if (!int.TryParse(idText, out int parsedID) || parsedID <= 0)
-            {
-                tID.BackColor = System.Drawing.Color.LightCoral;
-                errorMessage += "- ID(ID должен быть целым положительным числом)\n";
-                hasError = true;
-            }
-            else
-            {
-                if (MainForm._store.GetClothingById(int.Parse(idText)) == null)
-                {
-                    tID.BackColor = System.Drawing.Color.LightCoral;
-                    errorMessage += "- ID(Такого ID не существует)\n";
-                    hasError = true;
-                }
-                else
-                {
-                    Clothing clothing = MainForm._store.GetClothingById(int.Parse(idText));
-                    tName.Text = clothing.Name;
-                    tCategory.Text = clothing.Category.ToString();
-                    tSize.Text = clothing.Size.ToString();
-                    tPrice.Text = clothing.Price.ToString();
-                }
-            }
-
-            if (hasError)
-            {
-                MessageBox.Show(errorMessage, "Ошибка валидации", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                bRemove.Hide();
-                return;
-            }
-            bRemove.Show();
         }
 
         private void label1_Click(object sender, EventArgs e)

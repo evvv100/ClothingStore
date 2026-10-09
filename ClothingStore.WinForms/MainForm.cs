@@ -26,10 +26,7 @@ namespace ClothingStore.WinForms
 
             SeedInitialData();
 
-            bView.Click += bView_Click;
-            bAdd.Click += bAdd_Click;
             bSearch.Click += bSearch_Click;
-            bChange.Click += bChange_Click;
             bAssemble.Click += bAssemble_Click;
             bHistory.Click += BHistory_Click;
             bBack.Click += BBack_Click;
@@ -72,31 +69,7 @@ namespace ClothingStore.WinForms
             Show();
         }
         /// <summary>
-        /// Создает форму Каталога, блокирует и скрывает главную форму
-        /// </summary>
-        /// <param name="sender">Объект-отправитель события</param>
-        /// <param name="e">Аргумент данных события</param>
-        private void bView_Click(object sender, EventArgs e)
-        {
-            ViewCatalogForm catalogForm = new ViewCatalogForm();
-            Hide();
-            catalogForm.ShowDialog();
-            Show();
-        }
-        /// <summary>
-        /// Создает форму Добавления товаров, блокирует и скрывает главную форму
-        /// </summary>
-        /// <param name="sender">Объект-отправитель события</param>
-        /// <param name="e">Аргумент данных события</param>
-        private void bAdd_Click(object sender, EventArgs e)
-        {
-            AddClothingForm addClothingForm = new AddClothingForm();
-            Hide();
-            addClothingForm.ShowDialog();
-            Show();
-        }
-        /// <summary>
-        /// Создает форму Поиска по ID, блокирует и скрывает главную форму
+        /// Создает форму Каталога, где можно посмотреть, добавить или удалить одежду, блокирует и скрывает главную форму
         /// </summary>
         /// <param name="sender">Объект-отправитель события</param>
         /// <param name="e">Аргумент данных события</param>
@@ -105,18 +78,6 @@ namespace ClothingStore.WinForms
             SearchByIDForm searchByIDForm = new SearchByIDForm();
             Hide();
             searchByIDForm.ShowDialog();
-            Show();
-        }
-        /// <summary>
-        /// Создает форму по изменению товаров, блокирует и скрывает главную форму
-        /// </summary>
-        /// <param name="sender">Объект-отправитель события</param>
-        /// <param name="e">Аргумент данных события</param>
-        private void bChange_Click(object sender, EventArgs e)
-        {
-            ChangeClothingForm changeForm = new ChangeClothingForm();
-            Hide();
-            changeForm.ShowDialog();
             Show();
         }
         /// <summary>
