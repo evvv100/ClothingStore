@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using ClothingStore.Core;
 using ClothingCategory1;
 using ClothingSize1;
+using User1;
+using System.Security.Claims;
+using RoleEnum1;
+using PermissionService1;
+using PermissionEnum1;
 
 
 namespace Logic1
@@ -19,8 +24,12 @@ namespace Logic1
         /// Добавляет одежду в каталог
         /// </summary>
         /// <param name="clothing">Одежда, которую надо добавить</param>
-        public void AddClothing(Clothing clothing)
+        public void AddClothing(Clothing clothing, User user)
         {
+            if(!PermissionService.CanDo(user.Role, Permission.ManageCatalog))
+            {
+                throw new Exception("Ошибка безопасности: у вас нет прав на добавление товара!");
+            }
             if (clothing != null)
             {
                 _allClothing.Add(clothing);
@@ -30,11 +39,16 @@ namespace Logic1
         /// Удаляет одежду из каталога по ID
         /// </summary>
         /// <param name="id">ID одежды, которую нужно удалить из каталога</param>
-        public void RemoveClothing(int id)
+        public void RemoveClothing(int id, User user)
         {
-            if (_allClothing.Any(c => c.ID == id))
+            if (!PermissionService.CanDo(user.Role, Permission.ManageCatalog))
             {
-                _allClothing.Remove(_allClothing.Find(c => c.ID == id));
+                throw new Exception("Ошибка безопасности: у вас нет прав на удаление товара!");
+            }
+            var clothingToRemove = _allClothing.FirstOrDefault(c => c.ID == id);
+            if (clothingToRemove != null)
+            {
+                _allClothing.Remove(clothingToRemove);
             }
         }
         /// <summary>
@@ -58,8 +72,12 @@ namespace Logic1
         /// Изменяет конкретный товар по ID (ID сохраняется)
         /// </summary>
         /// <param name="clothing">Объект Clothing, который нужно изменить в каталоге</param>
-        public void ChangeClothing(Clothing clothing)
+        public void ChangeClothing(Clothing clothing, User user)
         {
+            if (!PermissionService.CanDo(user.Role, Permission.ManageCatalog))
+            {
+                throw new Exception("Ошибка безопасности: у вас нет прав на изменение товара!");
+            }
             if (clothing != null && _allClothing.Any(c => c.ID == clothing.ID))
             {
                 Clothing cl = _allClothing.Find(c => c.ID == clothing.ID);
@@ -68,25 +86,6 @@ namespace Logic1
                 cl.Size = clothing.Size;
                 cl.Price = clothing.Price;
             }
-        }
-        /// <summary>
-        /// Собирает корзину товаров, удаляет ее из каталога, считает сумму покупки
-        /// </summary>
-        /// <param name="id">Список ID товаров, которые нужно купить</param>
-        /// <returns>Возвращает сумму покупки</returns>
-        public int AssembleBasket(ref List<int> id)
-        {
-            int count = 0;
-            for (int i = 0; i < id.Count; i++)
-            {
-                int idd = id[i];
-                Clothing cl = _allClothing.Find(c => c.ID == idd);
-                if (cl == null)
-                    continue;
-                count += cl.Price;
-                _allClothing.Remove(cl);
-            }
-            return count;
         }
         /// <summary>
         /// Фильтрует список одежды по размеру

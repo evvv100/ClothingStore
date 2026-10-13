@@ -9,6 +9,8 @@
   <Project Path="Order1/Order1.csproj" Id="5ea10d1c-0941-4b02-9746-8de8efa52ffe" />
   <Project Path="OrderItem1/OrderItem1.csproj" Id="aba7eba7-5fcf-4119-8543-cc210d9471bc" />
   <Project Path="OrderStatusEnum1/OrderStatusEnum1.csproj" Id="7b6eb9c5-d3fb-463e-b127-14e59c4f26b1" />
+  <Project Path="PermissionEnum1/PermissionEnum1.csproj" Id="56854923-a7b8-434f-8a9a-07d397ad912c" />
+  <Project Path="PermissionService1/PermissionService1.csproj" Id="bd59966a-1f6a-4266-b73e-3a12e47bd6ae" />
   <Project Path="ReturnRequest1/ReturnRequest1.csproj" Id="ddf436ee-9f04-4531-8e88-79e83808e91d" />
   <Project Path="ReturnStatusEnum1/ReturnStatusEnum1.csproj" Id="c992239c-5585-4ba3-9f5f-7c11dae25c91" />
   <Project Path="RoleEnum/RoleEnum1.csproj" Id="057c0ea3-4a1f-4379-84ee-d21815a3595c" />

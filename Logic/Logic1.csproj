@@ -57,6 +57,22 @@
       <Project>{3c734a1d-c82f-4759-886f-854b12e4778a}</Project>
       <Name>ClothingStore.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PermissionEnum1\PermissionEnum1.csproj">
+      <Project>{56854923-a7b8-434f-8a9a-07d397ad912c}</Project>
+      <Name>PermissionEnum1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PermissionService1\PermissionService1.csproj">
+      <Project>{bd59966a-1f6a-4266-b73e-3a12e47bd6ae}</Project>
+      <Name>PermissionService1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoleEnum\RoleEnum1.csproj">
+      <Project>{057c0ea3-4a1f-4379-84ee-d21815a3595c}</Project>
+      <Name>RoleEnum1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\User1\User1.csproj">
+      <Project>{fad8755a-3c04-44b9-b4b7-e35662a300a1}</Project>
+      <Name>User1</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
