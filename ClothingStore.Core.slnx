@@ -5,4 +5,14 @@
   <Project Path="ClothingStore.Core/ClothingStore.Core.csproj" Id="3c734a1d-c82f-4759-886f-854b12e4778a" />
   <Project Path="ClothingStore.WinForms/ClothingStore.WinForms.csproj" Id="2bce5fd2-b93d-4fc4-bef1-cd28c1704901" />
   <Project Path="Logic/Logic1.csproj" Id="1a79c3b7-df13-456d-9f1d-1059e7d180db" />
+  <Project Path="MovementTypeEnum1/MovementTypeEnum1.csproj" Id="9434ef4e-90c0-4463-8da9-b479760f9cfe" />
+  <Project Path="Order1/Order1.csproj" Id="5ea10d1c-0941-4b02-9746-8de8efa52ffe" />
+  <Project Path="OrderItem1/OrderItem1.csproj" Id="aba7eba7-5fcf-4119-8543-cc210d9471bc" />
+  <Project Path="OrderStatusEnum1/OrderStatusEnum1.csproj" Id="7b6eb9c5-d3fb-463e-b127-14e59c4f26b1" />
+  <Project Path="ReturnRequest1/ReturnRequest1.csproj" Id="ddf436ee-9f04-4531-8e88-79e83808e91d" />
+  <Project Path="ReturnStatusEnum1/ReturnStatusEnum1.csproj" Id="c992239c-5585-4ba3-9f5f-7c11dae25c91" />
+  <Project Path="RoleEnum/RoleEnum1.csproj" Id="057c0ea3-4a1f-4379-84ee-d21815a3595c" />
+  <Project Path="StatusChange1/StatusChange1.csproj" Id="8e047584-9276-4604-a78b-e8ba8f03d6e2" />
+  <Project Path="StockMovement1/StockMovement1.csproj" Id="7dfca505-5397-4f73-94b6-dc16e40f539c" />
+  <Project Path="User1/User1.csproj" Id="fad8755a-3c04-44b9-b4b7-e35662a300a1" />
 </Solution>

@@ -66,6 +66,12 @@
     <Compile Include="ChangeClothingForm.Designer.cs">
       <DependentUpon>ChangeClothingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChoiceForm.Designer.cs">
+      <DependentUpon>ChoiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     <EmbeddedResource Include="ChangeClothingForm.resx">
       <DependentUpon>ChangeClothingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChoiceForm.resx">
+      <DependentUpon>ChoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HistoryForm.resx">
       <DependentUpon>HistoryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,6 +118,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SearchByIDForm.resx">
       <DependentUpon>SearchByIDForm.cs</DependentUpon>
@@ -143,6 +153,9 @@
       <Project>{1a79c3b7-df13-456d-9f1d-1059e7d180db}</Project>
       <Name>Logic1</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
