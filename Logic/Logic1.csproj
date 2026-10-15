@@ -57,6 +57,10 @@
       <Project>{3c734a1d-c82f-4759-886f-854b12e4778a}</Project>
       <Name>ClothingStore.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{26d19712-3070-46aa-b63c-413e4f683e3b}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 using ClothingStore.Core;
 using ClothingCategory1;
 using ClothingSize1;
+using DataAccessLayer;
 
 
 namespace Logic1
 {
     public class Logic
     {
-        private List<Clothing> _allClothing = new List<Clothing>();
+        private readonly IRepository<Clothing> _repository;
 
-        public Logic() { }
+        public Logic(IRepository<Clothing> repository) 
+        {
+            _repository = repository;
+        }
         /// <summary>
         /// Добавляет одежду в каталог
         /// </summary>
@@ -23,7 +27,7 @@ namespace Logic1
         {
             if (clothing != null)
             {
-                _allClothing.Add(clothing);
+                _repository.Add(clothing);
             }
         }
         /// <summary>
@@ -32,10 +36,7 @@ namespace Logic1
         /// <param name="id">Id одежды, которую нужно удалить из каталога</param>
         public void RemoveClothing(int id)
         {
-            if (_allClothing.Any(c => c.Id == id))
-            {
-                _allClothing.Remove(_allClothing.Find(c => c.Id == id));
-            }
+            _repository.Delete(id);
         }
         /// <summary>
         /// Возвращает список - каталог товаров в логике
@@ -43,7 +44,7 @@ namespace Logic1
         /// <param name="clothing">Список товаров, который хранится в экзмепляре класса Logic</param>
         public void ReturnList(out List<Clothing> clothing)
         {
-            clothing = new List<Clothing>(_allClothing);
+            clothing = _repository.ReadAll();
         }
         /// <summary>
         /// Возвращает одежду по Id
@@ -52,7 +53,7 @@ namespace Logic1
         /// <returns>Возвращает объект Clothing по Id</returns>
         public Clothing GetClothingById(int id)
         {
-            return _allClothing.FirstOrDefault(c => c.Id == id);
+            return _repository.ReadById(id);
         }
         /// <summary>
         /// Изменяет конкретный товар по Id (Id сохраняется)
@@ -60,42 +61,15 @@ namespace Logic1
         /// <param name="clothing">Объект Clothing, который нужно изменить в каталоге</param>
         public void ChangeClothing(Clothing clothing)
         {
-            if (clothing != null && _allClothing.Any(c => c.Id == clothing.Id))
+            if (clothing != null)
             {
-                Clothing cl = _allClothing.Find(c => c.Id == clothing.Id);
-                cl.Name = clothing.Name;
-                cl.Category = clothing.Category;
-                cl.Size = clothing.Size;
-                cl.Price = clothing.Price;
+                _repository.Update(clothing);
             }
         }
-        /// <summary>
-        /// Собирает корзину товаров, удаляет ее из каталога, считает сумму покупки
-        /// </summary>
-        /// <param name="id">Список Id товаров, которые нужно купить</param>
-        /// <returns>Возвращает сумму покупки</returns>
-        public int AssembleBasket(ref List<int> id)
-        {
-            int count = 0;
-            for (int i = 0; i < id.Count; i++)
-            {
-                int idd = id[i];
-                Clothing cl = _allClothing.Find(c => c.Id == idd);
-                if (cl == null)
-                    continue;
-                count += cl.Price;
-                _allClothing.Remove(cl);
-            }
-            return count;
-        }
-        /// <summary>
-        /// Фильтрует список одежды по размеру
-        /// </summary>
-        /// <param name="clothing">Список одежды</param>
-        /// <param name="size">Размер, по которому будем фильтровать</param>
-        public void FilterSize(out List<Clothing> clothing, ClothingSize size)
-        {
-            clothing = new List<Clothing>(_allClothing.Where(c => c.Size == size));
-        }
+        
+        //public void FilterSize(out List<Clothing> clothing, ClothingSize size)
+        //{
+        //    clothing = new List<Clothing>(_allClothing.Where(c => c.Size == size));
+        //}
     }
 }

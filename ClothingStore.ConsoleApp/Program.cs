@@ -5,12 +5,13 @@ using ClothingCategory1;
 using ClothingSize1;
 using ClothingStore.Core;
 using Logic1;
+using DataAccessLayer;
 
 namespace ClothingStore.ConsoleApp
 {
     internal class Program
     {
-        private static Logic _store = new Logic();
+        private static Logic _store = new Logic(new DapperRepository());
         private static Random rnd = new Random();
         private static int _balance = rnd.Next(10000, 20001);
         private static List<Clothing> _list = new List<Clothing>(); 
@@ -236,7 +237,8 @@ namespace ClothingStore.ConsoleApp
                 List<Clothing> catalog;
                 if (filterOn)
                 {
-                    _store.FilterSize(out catalog, filterSize);
+                    _store.ReturnList(out List<Clothing> allClothesFromDb);
+                    catalog = allClothesFromDb.Where(c=>c.Size == filterSize).ToList();
                     Console.WriteLine("Каталог (фильтр по размеру: " + filterSize + "):");
                 }
                 else

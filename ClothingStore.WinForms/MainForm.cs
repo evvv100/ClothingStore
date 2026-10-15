@@ -11,12 +11,13 @@ using ClothingStore.Core;
 using ClothingCategory1;
 using ClothingSize1;
 using Logic1;
+using DataAccessLayer;
 
 namespace ClothingStore.WinForms
 {
     public partial class MainForm : Form
     {
-        public static Logic _store = new Logic();
+        public static Logic _store = new Logic(new DapperRepository());
         public static Random rnd = new Random();
         public static List<Clothing> _list = new List<Clothing>();
         public static int _balance = rnd.Next(10000, 20001);
