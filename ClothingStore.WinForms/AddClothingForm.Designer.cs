@@ -97,7 +97,7 @@
             this.lID.Name = "lID";
             this.lID.Size = new System.Drawing.Size(45, 29);
             this.lID.TabIndex = 6;
-            this.lID.Text = "ID:";
+            this.lID.Text = "Id:";
             // 
             // lName
             // 

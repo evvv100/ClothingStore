@@ -4,5 +4,6 @@
   <Project Path="ClothingStore.ConsoleApp/ClothingStore.ConsoleApp.csproj" Id="b966daf6-7741-4094-b706-75ee76b34b27" />
   <Project Path="ClothingStore.Core/ClothingStore.Core.csproj" Id="3c734a1d-c82f-4759-886f-854b12e4778a" />
   <Project Path="ClothingStore.WinForms/ClothingStore.WinForms.csproj" Id="2bce5fd2-b93d-4fc4-bef1-cd28c1704901" />
+  <Project Path="DataAccessLayer/DataAccessLayer.csproj" Id="26d19712-3070-46aa-b63c-413e4f683e3b" />
   <Project Path="Logic/Logic1.csproj" Id="1a79c3b7-df13-456d-9f1d-1059e7d180db" />
 </Solution>

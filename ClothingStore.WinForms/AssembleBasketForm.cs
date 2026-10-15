@@ -198,8 +198,8 @@ namespace ClothingStore.WinForms
             dBasket.DataSource = null;
             dBasket.DataSource = _basket;
 
-            if(dBasket.Columns["ID"] != null)
-                dBasket.Columns["ID"].HeaderText = "Артикул";
+            if(dBasket.Columns["Id"] != null)
+                dBasket.Columns["Id"].HeaderText = "Артикул";
             if (dBasket.Columns["Name"] != null)
                 dBasket.Columns["Name"].HeaderText = "Название";
             if (dBasket.Columns["Category"] != null)
@@ -233,8 +233,8 @@ namespace ClothingStore.WinForms
                 dCatalog.DataSource = clothing;
             }
 
-            if(dCatalog.Columns["ID"] != null)
-                dCatalog.Columns["ID"].HeaderText = "Артикул";
+            if(dCatalog.Columns["Id"] != null)
+                dCatalog.Columns["Id"].HeaderText = "Артикул";
             if (dCatalog.Columns["Name"] != null)
                 dCatalog.Columns["Name"].HeaderText = "Название";
             if (dCatalog.Columns["Category"] != null)

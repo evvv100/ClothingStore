@@ -77,7 +77,7 @@ namespace ClothingStore.ConsoleApp
             while (true)
             {
                 int id = rnd.Next(100, 1000);
-                if (_store.GetClothingById(id) == null && !_list.Any(c => c.ID == id))
+                if (_store.GetClothingById(id) == null && !_list.Any(c => c.Id == id))
                 {
                     return id;
                 }
@@ -132,7 +132,7 @@ namespace ClothingStore.ConsoleApp
             PrintHeader("ДОБАВЛЕНИЕ ОДЕЖДЫ");
 
             int id = GenerateId();
-            Console.WriteLine("Артикул (ID) нового товара: " + id + "\n");
+            Console.WriteLine("Артикул (Id) нового товара: " + id + "\n");
 
             string name;
             ClothingCategory category;
@@ -169,7 +169,7 @@ namespace ClothingStore.ConsoleApp
 
             ClearScreen();
             PrintHeader("ИЗМЕНЕНИЕ ОДЕЖДЫ");
-            Console.WriteLine("Артикул товара: " + item.ID + " (не изменяется)");
+            Console.WriteLine("Артикул товара: " + item.Id + " (не изменяется)");
             Console.WriteLine("Сейчас: {0} | {1} | {2} | {3} руб.\n", item.Name, item.Category, item.Size, item.Price);
 
             string name;
@@ -181,7 +181,7 @@ namespace ClothingStore.ConsoleApp
                 return;
             }
 
-            _store.ChangeClothing(new Clothing(item.ID, name, category, size, price));
+            _store.ChangeClothing(new Clothing(item.Id, name, category, size, price));
             Console.WriteLine("\nТовар успешно изменен!");
             Pause();
         }
@@ -205,9 +205,9 @@ namespace ClothingStore.ConsoleApp
                 return;
             }
 
-            if (_store.GetClothingById(item.ID) != null)
+            if (_store.GetClothingById(item.Id) != null)
             {
-                _store.RemoveClothing(item.ID);
+                _store.RemoveClothing(item.Id);
                 Console.WriteLine("Товар удален!");
             }
             else
@@ -268,9 +268,9 @@ namespace ClothingStore.ConsoleApp
                                 break;
                             }
                             Clothing item = AskItem("Введите артикул товара для добавления в корзину", catalog);
-                            if (item != null && _store.GetClothingById(item.ID) != null)
+                            if (item != null && _store.GetClothingById(item.Id) != null)
                             {
-                                _store.RemoveClothing(item.ID);
+                                _store.RemoveClothing(item.Id);
                                 basket.Add(item);
                             }
                             break;
@@ -605,7 +605,7 @@ namespace ClothingStore.ConsoleApp
                     continue;
                 }
 
-                Clothing item = source.Find(c => c.ID == id);
+                Clothing item = source.Find(c => c.Id == id);
                 if (item == null)
                 {
                     Console.WriteLine("Товар с таким артикулом не найден в списке.");
@@ -641,7 +641,7 @@ namespace ClothingStore.ConsoleApp
             Console.WriteLine(new string('-', 66));
             foreach (Clothing item in list)
             {
-                Console.WriteLine("{0,-9}{1,-26}{2,-12}{3,-8}{4}", item.ID, item.Name, item.Category, item.Size, item.Price);
+                Console.WriteLine("{0,-9}{1,-26}{2,-12}{3,-8}{4}", item.Id, item.Name, item.Category, item.Size, item.Price);
             }
         }
 

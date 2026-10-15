@@ -65,8 +65,8 @@ namespace ClothingStore.WinForms
             dCatalog.DataSource = null;
             dCatalog.DataSource = clothesList;
 
-            if (dCatalog.Columns["ID"] != null)
-                dCatalog.Columns["ID"].HeaderText = "Артикул";
+            if (dCatalog.Columns["Id"] != null)
+                dCatalog.Columns["Id"].HeaderText = "Артикул";
             if (dCatalog.Columns["Name"] != null)
                 dCatalog.Columns["Name"].HeaderText = "Название";
             if (dCatalog.Columns["Category"] != null)
@@ -86,7 +86,7 @@ namespace ClothingStore.WinForms
             Close();
         }
         /// <summary>
-        /// Проверяет, правильно ли написан ID товара, выводит информацию о нем, показывает кнопку для удаления
+        /// Проверяет, правильно ли написан Id товара, выводит информацию о нем, показывает кнопку для удаления
         /// </summary>
         /// <param name="sender">Объект-отправитель события</param>
         /// <param name="e">Аргумент данных события</param>

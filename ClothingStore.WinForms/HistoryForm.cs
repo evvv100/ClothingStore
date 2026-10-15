@@ -39,9 +39,9 @@ namespace ClothingStore.WinForms
                 if (cellValue != null)
                 {
                     int selectedId = Convert.ToInt32(cellValue);
-                    if (MainForm._list.Any(x=>x.ID== selectedId))
+                    if (MainForm._list.Any(x=>x.Id== selectedId))
                     {
-                        Clothing newCl = MainForm._list.Find( с=> с.ID == selectedId);
+                        Clothing newCl = MainForm._list.Find( с=> с.Id == selectedId);
                         MainForm._balance += newCl.Price;
                         MainForm._list.Remove(newCl);
                         MainForm._store.AddClothing(newCl);
@@ -71,8 +71,8 @@ namespace ClothingStore.WinForms
             dList.DataSource = null;
             dList.DataSource = MainForm._list;
 
-            if (dList.Columns["ID"] != null)
-                dList.Columns["ID"].HeaderText = "Артикул";
+            if (dList.Columns["Id"] != null)
+                dList.Columns["Id"].HeaderText = "Артикул";
             if (dList.Columns["Name"] != null)
                 dList.Columns["Name"].HeaderText = "Название";
             if (dList.Columns["Category"] != null)

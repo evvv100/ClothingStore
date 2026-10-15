@@ -187,7 +187,7 @@
             this.lIDcc.Name = "lIDcc";
             this.lIDcc.Size = new System.Drawing.Size(137, 29);
             this.lIDcc.TabIndex = 21;
-            this.lIDcc.Text = "ID товара:";
+            this.lIDcc.Text = "Id товара:";
             // 
             // ChangeClothingForm
             // 

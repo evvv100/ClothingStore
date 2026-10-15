@@ -27,14 +27,14 @@ namespace Logic1
             }
         }
         /// <summary>
-        /// Удаляет одежду из каталога по ID
+        /// Удаляет одежду из каталога по Id
         /// </summary>
-        /// <param name="id">ID одежды, которую нужно удалить из каталога</param>
+        /// <param name="id">Id одежды, которую нужно удалить из каталога</param>
         public void RemoveClothing(int id)
         {
-            if (_allClothing.Any(c => c.ID == id))
+            if (_allClothing.Any(c => c.Id == id))
             {
-                _allClothing.Remove(_allClothing.Find(c => c.ID == id));
+                _allClothing.Remove(_allClothing.Find(c => c.Id == id));
             }
         }
         /// <summary>
@@ -46,23 +46,23 @@ namespace Logic1
             clothing = new List<Clothing>(_allClothing);
         }
         /// <summary>
-        /// Возвращает одежду по ID
+        /// Возвращает одежду по Id
         /// </summary>
-        /// <param name="id">ID товара, который нужен</param>
-        /// <returns>Возвращает объект Clothing по ID</returns>
+        /// <param name="id">Id товара, который нужен</param>
+        /// <returns>Возвращает объект Clothing по Id</returns>
         public Clothing GetClothingById(int id)
         {
-            return _allClothing.FirstOrDefault(c => c.ID == id);
+            return _allClothing.FirstOrDefault(c => c.Id == id);
         }
         /// <summary>
-        /// Изменяет конкретный товар по ID (ID сохраняется)
+        /// Изменяет конкретный товар по Id (Id сохраняется)
         /// </summary>
         /// <param name="clothing">Объект Clothing, который нужно изменить в каталоге</param>
         public void ChangeClothing(Clothing clothing)
         {
-            if (clothing != null && _allClothing.Any(c => c.ID == clothing.ID))
+            if (clothing != null && _allClothing.Any(c => c.Id == clothing.Id))
             {
-                Clothing cl = _allClothing.Find(c => c.ID == clothing.ID);
+                Clothing cl = _allClothing.Find(c => c.Id == clothing.Id);
                 cl.Name = clothing.Name;
                 cl.Category = clothing.Category;
                 cl.Size = clothing.Size;
@@ -72,7 +72,7 @@ namespace Logic1
         /// <summary>
         /// Собирает корзину товаров, удаляет ее из каталога, считает сумму покупки
         /// </summary>
-        /// <param name="id">Список ID товаров, которые нужно купить</param>
+        /// <param name="id">Список Id товаров, которые нужно купить</param>
         /// <returns>Возвращает сумму покупки</returns>
         public int AssembleBasket(ref List<int> id)
         {
@@ -80,7 +80,7 @@ namespace Logic1
             for (int i = 0; i < id.Count; i++)
             {
                 int idd = id[i];
-                Clothing cl = _allClothing.Find(c => c.ID == idd);
+                Clothing cl = _allClothing.Find(c => c.Id == idd);
                 if (cl == null)
                     continue;
                 count += cl.Price;

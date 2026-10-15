@@ -160,7 +160,7 @@
             this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "SearchByIDForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Поиск по ID";
+            this.Text = "Поиск по Id";
             this.Load += new System.EventHandler(this.SearchByIDForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dCatalog)).EndInit();
             this.ResumeLayout(false);

@@ -16,7 +16,7 @@ namespace ClothingStore.WinForms
 {
     public partial class ChangeClothingForm : Form
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public ChangeClothingForm(int id)
         {
             InitializeComponent();
@@ -25,8 +25,8 @@ namespace ClothingStore.WinForms
             bCancel.Click += BCancel_Click;
             ControlBox = false;
             label2.Text = MainForm._balance.ToString();
-            ID = id;
-            lID.Text = ID.ToString();
+            Id = id;
+            lID.Text = Id.ToString();
         }
         /// <summary>
         /// Закрывает форму
@@ -99,7 +99,7 @@ namespace ClothingStore.WinForms
             ClothingCategory categoryText = (ClothingCategory)cCategory.SelectedItem;
             ClothingSize sizeText = (ClothingSize)cSize.SelectedItem;
 
-            Clothing newClothing = new Clothing(ID, nameText, categoryText, sizeText, int.Parse(priceText));
+            Clothing newClothing = new Clothing(Id, nameText, categoryText, sizeText, int.Parse(priceText));
             MainForm._store.ChangeClothing(newClothing);
 
             MessageBox.Show("Товар успешно изменен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);

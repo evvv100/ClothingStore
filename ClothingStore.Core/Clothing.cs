@@ -10,16 +10,16 @@ using ClothingSize1;
 
 namespace ClothingStore.Core
 {
-    public class Clothing
+    public class Clothing : IDomainObject
     {
-        public int ID {  get; set; }
+        public int Id {  get; set; }
         public string Name { get; set; }
         public ClothingCategory Category { get; set; }
         public ClothingSize Size { get; set; }
         public int Price { get; set; }
         public Clothing(int iD, string name, ClothingCategory category, ClothingSize size, int price)
         {
-            ID = iD;
+            Id = iD;
             Name = name;
             Category = category;
             Size = size;
